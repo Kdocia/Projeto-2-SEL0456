@@ -19,40 +19,40 @@ class User:
                 check = input('Confimre sua senha:\n')
 
     def set_cargo(self):
-        print('Cargos Dispiníveis:\n [1] Visualizador   \n [2] Padrão \n [3] Administrador  \n [4] Super Administrador')
+        print('Cargos Dispiníveis:\n [1] Visualizador   \n [2] Padrão \n [3] Administrador  \n [4] Super Administrador \n Qual é o tipo de cargo desse usuário?')
         while True:
-            n_cargo= input('Qual tipo de Cargo desse usuario ?\n(Insira o valor numérico correspondente)\n')
+            n_cargo= input('(Insira o valor numérico correspondente)\n')
             try:
                 n_cargo = int(n_cargo)
-                while n_cargo in [1,2,3,4]:
+                if n_cargo in [1,2,3,4]:
                     if n_cargo == 1:
-                        print('Usuário configurado como Visualizador')
-                        self.cargo = 'Visualizador'
+                                print('Usuário configurado como Visualizador')
+                                self.cargo = 'Visualizador'
                     elif n_cargo == 2:
-                        print('Usuário configurado como Padrão')
-                        self.cargo = 'Padrão'
+                                print('Usuário configurado como Padrão')
+                                self.cargo = 'Padrão'
                     elif n_cargo == 3:
-                        print('Usuário configurado como Administrador')
-                        self.cargo = 'Administrador'
+                                print('Usuário configurado como Administrador')
+                                self.cargo = 'Administrador'
                     elif n_cargo == 4:
-                        print('Usuário configurado como Super Administrador')
-                        self.cargo = 'Super Administrador'
-                    else:
-                            print("Cargo não encontrado")
-                break 
+                                print('Usuário configurado como Super Administrador')
+                                self.cargo = 'Super Administrador'
+                else:
+                    raise(Exception)    
+                break
+            except Exception:
+                print('Cargo não identificado')
             except ValueError:
-                i = 2
-                print('Deve ser inserido um valor numérico')
-
+                print('Cargo não identificado')
 
     def ssuccess(self):
-        print('Usuário criado com sucesso!')
+        print(f'Usuário criado com sucesso! \nBem vindo {self.nome}, você é o mais novo Usuário {self.cargo}')
 
 
 
 usuario = User('standard', 'standard', 'standard') 
 
-print('Crie seu usuário:')
+print('!Crie seu usuário!')
 usuario.set_nome()
 usuario.set_senha()
 usuario.set_cargo()
